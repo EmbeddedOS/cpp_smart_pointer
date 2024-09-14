@@ -160,6 +160,19 @@ namespace lava
         friend shared_ptr<U> make_shared(Args &&...args);
     };
 
+    template <typename T>
+    class weak_ptr
+    {
+        __shared_count _weak_counter;
+
+    public:
+        weak_ptr() = default;
+
+        shared_ptr<T> lock() const noexcept
+        {
+        }
+    };
+
     template <class T, class... Args>
     shared_ptr<T> make_shared(Args &&...args)
     {
