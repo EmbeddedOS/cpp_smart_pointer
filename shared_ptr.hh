@@ -61,7 +61,7 @@ namespace lava
         {
             if (_ptr != nullptr)
             {
-                other->_ptr = nullptr;
+                other._ptr = nullptr;
                 other._counter = nullptr;
             }
         }
@@ -155,5 +155,14 @@ namespace lava
         {
             reset();
         }
+
+        template <class U, class... Args>
+        friend shared_ptr<U> make_shared(Args &&...args);
     };
+
+    template <class T, class... Args>
+    shared_ptr<T> make_shared(Args &&...args)
+    {
+        return {new T(std::forward<Args>(args)...)};
+    }
 }

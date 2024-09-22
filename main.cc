@@ -5,7 +5,7 @@
 int main()
 {
     lava::shared_ptr<int> ptr (new int{3});
-        lava::shared_ptr<int> ptr2 (ptr);
+        lava::shared_ptr<int> ptr2 = lava::make_shared<int>(4);
     ptr.swap(ptr2);
 
     std::cout << *ptr << *ptr2 <<  ptr2.use_count() << std::endl;
